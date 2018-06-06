@@ -1,6 +1,7 @@
 package connection;
 
 //Pacotes importados no ConnectionFactory
+//Testando IDE
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
