@@ -1,7 +1,8 @@
 package connection;
 
 //Pacotes importados no ConnectionFactory
-//Testando IDE
+
+//Teste
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ public class ConnectionFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/bdpentasol";
     private static final String USER = "root";
-    private static final String PASS = "";
+    private static final String PASS = "senha";
 
     public static Connection getConnection() {
         try {
