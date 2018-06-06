@@ -31,11 +31,12 @@ public class UsuarioDAO {
             stmt.setString(3, usuario.getEmail());
             stmt.setString(4, usuario.getDataNascimento());
             stmt.setBoolean(5, usuario.getPossuiInstrumento());
-            StringJoiner listaAulas = new StringJoiner(",");
             
-            for(Integer idAula: usuario.getIdAula()){ 
-       		listaAulas.add(idAula.toString());
-            } 			
+            StringJoiner listaAulas = new StringJoiner(",");
+            List<Integer> idAulas = new ArrayList<Integer>(usuario.getIdAula());
+            idAulas.forEach((idAula) -> {
+                listaAulas.add(idAula.toString());
+            }); 			
             
             stmt.setString(6, listaAulas.toString());
 
