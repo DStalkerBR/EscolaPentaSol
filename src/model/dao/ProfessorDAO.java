@@ -26,7 +26,7 @@ public class ProfessorDAO {
         
         try {
             
-            stmt = con.prepareStatement("INSERT INTO aluno (login, senha, cpf, nome, email, endereco, celular, nascimento, aulas, especializacao) "
+            stmt = con.prepareStatement("INSERT INTO professor (login, senha, cpf, nome, email, endereco, celular, nascimento, aulas, especializacao) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, prof.getLogin());
             stmt.setString(2, prof.getSenha());
@@ -75,7 +75,7 @@ public class ProfessorDAO {
         List<Professor> profs = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aluno");
+            stmt = con.prepareStatement("SELECT * FROM professor");
             rs = stmt.executeQuery();
             
             while (rs.next()) {
