@@ -55,7 +55,7 @@ public class AdministradorDAO {
         List<Administrador> admins = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aluno");
+            stmt = con.prepareStatement("SELECT * FROM administrador");
             rs = stmt.executeQuery();
             
             while (rs.next()) {
