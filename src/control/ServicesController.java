@@ -1,20 +1,17 @@
 package control;
 
+import validacoes.*;
+
 public class ServicesController {
-  private ValidarCPF validacaoCPF;
-  private Criptografia criptografia;
   private AutenticacaoData autenticaData;
   private AutenticacaoData autenticaNascimento;
-  private ValidarEmail validarEmail;
   
   public boolean validarCPF(String cpf){
-    validacaoCPF = new ValidarCPF();
-    return validacaoCPF.isCPF(cpf);
+    return ValidarCPF.isCPF(cpf);
   }
   
   public String encriptarSenha(String senha){
-    criptografia = new Criptografia();
-    return criptografia.encriptar(senha);
+    return Criptografia.encriptar(senha);
   }
   
   public boolean validarData(String data){
@@ -28,7 +25,6 @@ public class ServicesController {
   }
   
   public boolean validaEmail(String email){
-    validarEmail = new ValidarEmail();
-    return validarEmail.validarEmail(email);
+    return ValidarEmail.validarEmail(email);
   }
 }
