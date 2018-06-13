@@ -60,7 +60,7 @@ public class InstrumentoDAO {
         List<Instrumento> instrumentos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aluno");
+            stmt = con.prepareStatement("SELECT * FROM instrumento");
             rs = stmt.executeQuery();
             
             while (rs.next()) {
