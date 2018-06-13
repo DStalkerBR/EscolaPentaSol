@@ -63,7 +63,7 @@ public class AulaDAO {
         List<Aula> aulas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aluno");
+            stmt = con.prepareStatement("SELECT * FROM aula");
             rs = stmt.executeQuery();
             
             while (rs.next()) {
