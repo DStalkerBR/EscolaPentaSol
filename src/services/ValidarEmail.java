@@ -1,4 +1,4 @@
-package validacoes;
+package services;
 
 //Classe ValidarEmail
 public class ValidarEmail {

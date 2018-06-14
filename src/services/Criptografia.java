@@ -1,4 +1,4 @@
-package validacoes;
+package services;
 
 //Classe Criptografia
 import java.io.UnsupportedEncodingException;

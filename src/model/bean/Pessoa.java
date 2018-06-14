@@ -2,12 +2,12 @@ package model.bean;
 
 //Classe Pessoa
 public class Pessoa {
-    private String nome;
-    private String dataNascimento;
-    private String endereco;
-    private String cpf;
-    private String celular;
-    private String email;
+    protected String nome;
+    protected String dataNascimento;
+    protected String endereco;
+    protected String cpf;
+    protected String celular;
+    protected String email;
   
     //Construtores
     public Pessoa() {

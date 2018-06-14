@@ -61,18 +61,7 @@ public class AdministradorDAO {
             while (rs.next()) {
                 
                 Administrador admin = new Administrador();
-                
-                stmt.setString(1, admin.getLogin());
-            stmt.setString(2, admin.getSenha());
-            stmt.setString(3, admin.getCpf());
-            stmt.setString(4, admin.getNome());
-            stmt.setString(5, admin.getEmail());
-            stmt.setString(6, admin.getEndereco());
-            stmt.setString(7, admin.getCelular());            
-            stmt.setString(8,admin.getDataNascimento());
-            stmt.setString(9,admin.getTipoAdm());
-                
-                
+                                
                 admin.setIdAdm(rs.getShort("id"));
                 admin.setLogin(rs.getString("login"));
                 admin.setCpf(rs.getString("cpf"));
@@ -83,7 +72,6 @@ public class AdministradorDAO {
                 admin.setDataNascimento(rs.getString("nascimento"));
                 admin.setTipoAdm(rs.getString("tipo"));
                
-                
                 admins.add(admin);
             }
             

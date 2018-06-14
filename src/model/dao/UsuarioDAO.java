@@ -5,20 +5,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import model.bean.Administrador;
+import model.bean.Professor;
 
 //Class Administrador DAO 
 public class UsuarioDAO {
     
-   public boolean checarLogin(String login, String senha) {
-       if (checarLoginAdm (login, senha))
-           return true;
+   public Object checarLogin(String login, String senha) {
+       Administrador admin;
+       if ((admin = (Administrador)checarLoginAdm (login, senha)) != null)
+           return admin;
        return checarLoginProfessor(login,senha);
    }
    
  
-  private boolean checarLoginAdm(String login, String senha) {
+  private Object checarLoginAdm(String login, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -32,7 +38,20 @@ public class UsuarioDAO {
 
             rs = stmt.executeQuery();
 
-            return rs.next(); 
+            if (rs.next()){ 
+                Administrador admin = new Administrador();
+                admin.setIdAdm(rs.getShort("id"));
+                admin.setLogin(rs.getString("login"));
+                admin.setCpf(rs.getString("cpf"));
+                admin.setNome(rs.getString("nome"));
+                admin.setEmail(rs.getString("email"));
+                admin.setEndereco(rs.getString("endereco"));
+                admin.setCelular(rs.getString("celular"));
+                admin.setDataNascimento(rs.getString("nascimento"));
+                admin.setTipoAdm(rs.getString("tipo"));
+                return admin;
+            }
+                
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,11 +59,11 @@ public class UsuarioDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         } 
 
-        return false;
+        return null;
 
     }
   
-    private boolean checarLoginProfessor(String login, String senha) {
+    private Object checarLoginProfessor(String login, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -58,7 +77,22 @@ public class UsuarioDAO {
 
             rs = stmt.executeQuery();
 
-            return rs.next(); 
+            if (rs.next()){
+                Professor prof = new Professor();
+                prof.setId(rs.getShort("id"));
+                prof.setLogin(rs.getString("login"));
+                prof.setCpf(rs.getString("cpf"));
+                prof.setNome(rs.getString("nome"));
+                prof.setEmail(rs.getString("email"));
+                prof.setEndereco(rs.getString("endereco"));
+                prof.setCelular(rs.getString("celular"));
+                prof.setDataNascimento(rs.getString("nascimento"));
+                List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));                
+                prof.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
+                List<String> especializacoes = Arrays.asList(rs.getString("presencas").split(","));                
+                prof.setEspecializacoes(especializacoes.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
+                return prof;
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,7 +100,7 @@ public class UsuarioDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         } 
 
-        return false;
+        return null;
 
     }
   

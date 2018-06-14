@@ -1,4 +1,4 @@
-package validacoes;
+package services;
 
 //Classe ValidarCPF
 import java.util.InputMismatchException;

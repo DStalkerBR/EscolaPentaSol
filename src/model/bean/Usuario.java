@@ -6,8 +6,8 @@ import model.dao.UsuarioDAO;
 
 public class Usuario extends Pessoa {
 
-    private String login;
-    private String senha;
+    protected String login;
+    protected String senha;
 
     public Usuario(){
        super();
@@ -35,7 +35,7 @@ public class Usuario extends Pessoa {
         this.senha = senha;
     }
   
-  public boolean login (String login, String senha){
+  public Object login (String login, String senha){
       UsuarioDAO userDao = new UsuarioDAO(); 
       return userDao.checarLogin(login, senha);
   }

@@ -1,6 +1,9 @@
 package control;
 
-import validacoes.*;
+import services.ValidarCPF;
+import services.Criptografia;
+import services.ValidarEmail;
+import services.AutenticacaoData;
 
 public class ServicesController {
   private AutenticacaoData autenticaData;
