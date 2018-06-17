@@ -20,14 +20,19 @@ public class ProfessorDAO {
     
     public void inserir(Professor prof) {
         
-        Connection con = ConnectionFactory.getConnection();
-        
+        Connection con = ConnectionFactory.getConnection();        
         PreparedStatement stmt = null;
-        
+        String insert_sql = "INSERT INTO professor (login, senha, cpf, nome, email, endereco, celular, nascimento, aulas, especializacao) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String update_sql = "UPDATE  professor "
+                          + "SET login =?, senha =?, cpf=?, nome =?, email =?, endereco =?, celular =?, nascimento =?, aulas =?, especializacao =? "
+                          + "WHERE id = ?";
         try {
-            
-            stmt = con.prepareStatement("INSERT INTO professor (login, senha, cpf, nome, email, endereco, celular, nascimento, aulas, especializacao) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+            if (prof.getId() == 0)
+                stmt = con.prepareStatement(insert_sql);
+            else {
+                stmt = con.prepareStatement(update_sql);
+                stmt.setShort(9, prof.getId());
+            }
             stmt.setString(1, prof.getLogin());
             stmt.setString(2, prof.getSenha());
             stmt.setString(3, prof.getCpf());
@@ -47,7 +52,7 @@ public class ProfessorDAO {
             stmt.setString(9, stringAulas.toString());
             
             StringJoiner stringEspecializacoes = new StringJoiner(",");
-            List<Short> listaEspecializacoes = new ArrayList<Short>(prof.getEspecializacoes());
+            List<Short> listaEspecializacoes = new ArrayList<>(prof.getEspecializacoes());
             listaEspecializacoes.forEach((especializacao) -> {
                 stringAulas.add(especializacao.toString());
             });            
@@ -65,6 +70,48 @@ public class ProfessorDAO {
         
     }
     
+    public void delete (short idProf){
+        Connection con = ConnectionFactory.getConnection();
+        String sql = "DELETE FROM professor WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setShort(1, idProf);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Instrumento de id " + String.valueOf(idProf) + " deletado com sucesso!");            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }        
+    }
+    
+    public Professor find(short idProf) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Professor prof = null;
+        String sql = "SELECT * FROM instrumento WHERE id = ?";
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setShort(1, idProf);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                prof = map(rs);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return prof;
+    }
+    
     public List<Professor> listar() {
         
         Connection con = ConnectionFactory.getConnection();
@@ -80,20 +127,7 @@ public class ProfessorDAO {
             
             while (rs.next()) {
                 
-                Professor prof = new Professor();
-                prof.setId(rs.getShort("id"));
-                prof.setLogin(rs.getString("login"));
-                prof.setCpf(rs.getString("cpf"));
-                prof.setNome(rs.getString("nome"));
-                prof.setEmail(rs.getString("email"));
-                prof.setEndereco(rs.getString("endereco"));
-                prof.setCelular(rs.getString("celular"));
-                prof.setDataNascimento(rs.getString("nascimento"));
-                List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));                
-                prof.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
-                List<String> especializacoes = Arrays.asList(rs.getString("presencas").split(","));                
-                prof.setEspecializacoes(especializacoes.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
-                
+                Professor prof = map(rs);                
                 profs.add(prof);
             }
             
@@ -105,6 +139,23 @@ public class ProfessorDAO {
         
         return profs;
         
+    }
+    
+    private Professor map(ResultSet rs) throws SQLException {
+        Professor prof = new Professor();
+        prof.setId(rs.getShort("id"));
+        prof.setLogin(rs.getString("login"));
+        prof.setCpf(rs.getString("cpf"));
+        prof.setNome(rs.getString("nome"));
+        prof.setEmail(rs.getString("email"));
+        prof.setEndereco(rs.getString("endereco"));
+        prof.setCelular(rs.getString("celular"));
+        prof.setDataNascimento(rs.getString("nascimento"));
+        List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));
+        prof.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
+        List<String> especializacoes = Arrays.asList(rs.getString("presencas").split(","));
+        prof.setEspecializacoes(especializacoes.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
+        return prof;
     }
     
 }

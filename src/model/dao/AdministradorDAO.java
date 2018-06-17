@@ -18,12 +18,19 @@ public class AdministradorDAO {
     public void inserir(Administrador admin) {
         
         Connection con = ConnectionFactory.getConnection();
-        
         PreparedStatement stmt = null;
-        
+        String insert_sql = "INSERT INTO administrador (login, senha, cpf, nome, email, endereco, celular, nascimento, tipo) VALUES(?,?,?,?,?,?,?,?,?)";
+        String update_sql = "UPDATE administrador "
+                          + "SET login = ?, senha = ?, cpf = ?, nome = ?, email = ?, endereco = ?, celular = ?, nascimento = ?, tipo = ? "
+                          + "WHERE id = ?)";
         try {
-            stmt = con.prepareStatement("INSERT INTO administrador (login, senha, cpf, nome, email, endereco, celular, nascimento, tipo)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)");
+            if (admin.getId() == 0)
+                stmt = con.prepareStatement(insert_sql);
+            else {
+                stmt = con.prepareStatement(update_sql);
+                stmt.setShort(10, admin.getId());
+            }
+            
             stmt.setString(1, admin.getLogin());
             stmt.setString(2, admin.getSenha());
             stmt.setString(3, admin.getCpf());
@@ -45,6 +52,49 @@ public class AdministradorDAO {
         
     }
     
+        
+    public void delete (short idAdmin){
+        Connection con = ConnectionFactory.getConnection();
+        String sql = "DELETE FROM administrador WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setShort(1, idAdmin);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Administrador de id " + String.valueOf(idAdmin) + " deletado com sucesso!");            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministradorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }        
+    }
+    
+    public Administrador find(short idAdmin) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Administrador admin = null;
+        String sql = "SELECT * FROM administrador WHERE id = ?";
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setShort(1, idAdmin);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                admin = map(rs);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministradorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return admin;
+    }
+    
     public List<Administrador> listar() {
         
         Connection con = ConnectionFactory.getConnection();
@@ -59,19 +109,7 @@ public class AdministradorDAO {
             rs = stmt.executeQuery();
             
             while (rs.next()) {
-                
-                Administrador admin = new Administrador();
-                                
-                admin.setIdAdm(rs.getShort("id"));
-                admin.setLogin(rs.getString("login"));
-                admin.setCpf(rs.getString("cpf"));
-                admin.setNome(rs.getString("nome"));
-                admin.setEmail(rs.getString("email"));
-                admin.setEndereco(rs.getString("endereco"));
-                admin.setCelular(rs.getString("celular"));
-                admin.setDataNascimento(rs.getString("nascimento"));
-                admin.setTipoAdm(rs.getString("tipo"));
-               
+                Administrador admin = map(rs);               
                 admins.add(admin);
             }
             
@@ -85,6 +123,18 @@ public class AdministradorDAO {
         
     }
     
-        
+    private Administrador map(ResultSet rs) throws SQLException {
+        Administrador admin = new Administrador();
+        admin.setIdAdm(rs.getShort("id"));
+        admin.setLogin(rs.getString("login"));
+        admin.setCpf(rs.getString("cpf"));
+        admin.setNome(rs.getString("nome"));
+        admin.setEmail(rs.getString("email"));
+        admin.setEndereco(rs.getString("endereco"));
+        admin.setCelular(rs.getString("celular"));
+        admin.setDataNascimento(rs.getString("nascimento"));
+        admin.setTipoAdm(rs.getString("tipo"));
+        return admin;
+    }
 }
 

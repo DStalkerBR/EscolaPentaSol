@@ -18,13 +18,13 @@ public class UsuarioDAO {
     
    public Object checarLogin(String login, String senha) {
        Administrador admin;
-       if ((admin = (Administrador)checarLoginAdm (login, senha)) != null)
+       if ((admin = checarLoginAdm (login, senha)) != null)
            return admin;
        return checarLoginProfessor(login,senha);
    }
    
  
-  private Object checarLoginAdm(String login, String senha) {
+  private Administrador checarLoginAdm(String login, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -63,7 +63,7 @@ public class UsuarioDAO {
 
     }
   
-    private Object checarLoginProfessor(String login, String senha) {
+    private Professor checarLoginProfessor(String login, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

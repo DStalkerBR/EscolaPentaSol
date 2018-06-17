@@ -19,7 +19,7 @@ public class Instrumento {
         this.qtdInstrumentos = qtdInstrumentos;
     }
 
-    public int getId() {
+    public short getId() {
         return this.id;
     }
 

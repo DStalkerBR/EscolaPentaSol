@@ -26,7 +26,7 @@ public class Aula{
     } 
       
     //Identificador da Aula
-    public int getId() {
+    public short getId() {
         return this.id;
     }
 

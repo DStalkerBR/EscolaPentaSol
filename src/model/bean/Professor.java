@@ -21,7 +21,7 @@ public class Professor extends Usuario {
         this.idAula = aulas;
     }
 
-    public int getId() {
+    public short getId() {
         return this.id;
     }
 
