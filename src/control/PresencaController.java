@@ -12,4 +12,9 @@ public class PresencaController {
             presencas.get(i).setData(new Date());
         presenca.inserir(presencas);        
     }
+    
+    public int checarPresenca (short idAluno, short idAula){
+        ListaPresenca presenca = new ListaPresenca();
+        return presenca.checarPresenca(idAluno, idAula);
+    }
 }

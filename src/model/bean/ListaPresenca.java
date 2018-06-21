@@ -1,5 +1,7 @@
 package model.bean;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import model.dao.ListaPresencaDAO;
@@ -55,5 +57,17 @@ public class ListaPresenca {
         ListaPresencaDAO presencaDao = new ListaPresencaDAO();
         presencaDao.inserir(presencas);
     }    
+    
+    public int checarPresenca (short idAluno, short idAula){
+        ListaPresencaDAO presencaDao = new ListaPresencaDAO();
+        return presencaDao.count(idAluno, idAula);
+    }    
+    
+    @Override
+    public String toString(){
+        Format formatterDate = new SimpleDateFormat("dd-MM-yyyy");
+        return "Id: '" + String.valueOf(this.id ) + "', idAluno: '" + String.valueOf(this.idAluno ) + "', idAula: '" + String.valueOf(this.idAula ) +  
+                "', Presente: '" + this.presente +  "', Data: '" + formatterDate.format(this.data) +  "'";
+    }   
     
 }

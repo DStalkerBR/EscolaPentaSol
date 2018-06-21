@@ -127,7 +127,7 @@ public class AlunoDAO {
             while (rs.next()) {   
                 String aulas = rs.getString("aulas");
                 Aluno aluno;
-                if (aulas.indexOf(idAula) >= 0) {                     
+                if (aulas.indexOf(String.valueOf(idAula)) >= 0) {                     
                     aluno = map(rs);
                     alunos.add(aluno);
                 } 
@@ -177,12 +177,15 @@ public class AlunoDAO {
         aluno.setCpf(rs.getString("cpf"));
         aluno.setNome(rs.getString("nome"));
         aluno.setEmail(rs.getString("email"));
+        aluno.setEndereco(rs.getString("endereco"));
+        aluno.setCelular(rs.getString("celular"));
         aluno.setDataNascimento(rs.getString("nascimento"));
         aluno.setPossuiInstrumento(rs.getBoolean("instrumento"));
         List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));
         aluno.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
         Date dataCadastro = new Date(rs.getTimestamp("datacad").getTime());
         aluno.setDataCadastro(dataCadastro);
+        aluno.setMatricula("2016" + rs.getString("id"));
         return aluno;
     }
 }

@@ -50,4 +50,10 @@ public class Instrumento {
     public void setQtdInstrumentos(int qtdInstrumentos) {
         this.qtdInstrumentos = qtdInstrumentos;
     }   
+    
+    @Override
+    public String toString(){
+        return "Id: '" + String.valueOf(this.id ) + "', Nome: '" + this.nome + "', Descrição: '" + this.descricao +  
+                "', Quantidade: '" + String.valueOf(this.qtdInstrumentos) + "'";
+    }   
 }

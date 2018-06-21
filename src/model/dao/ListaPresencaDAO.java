@@ -111,7 +111,33 @@ public class ListaPresencaDAO {
         return presencas;        
     }
     
-    public List<ListaPresenca> listar(short idAluno) {
+    public int count(short idAluno, short idAula) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? AND idAula = ?");
+            stmt.setShort(1, idAluno);
+            stmt.setShort(2, idAula);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {                
+                count++;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListaPresencaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return count;        
+    }
+    
+    public List<ListaPresenca> listar(short idAluno, short idAula) {
         
         Connection con = ConnectionFactory.getConnection();
         
@@ -121,8 +147,9 @@ public class ListaPresencaDAO {
         List<ListaPresenca> presencas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? ");
+            stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? AND idAula = ?");
             stmt.setShort(1, idAluno);
+            stmt.setShort(2, idAula);
             rs = stmt.executeQuery();
             
             while (rs.next()) {                

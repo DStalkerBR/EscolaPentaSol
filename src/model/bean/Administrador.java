@@ -31,7 +31,7 @@ public class Administrador extends Usuario {
     
     @Override
     public String toString(){
-        return "Login: '" + String.valueOf(this.id ) + "', Login: '" + this.login + "', Nome: '" + this.nome +  
+        return "Id: '" + String.valueOf(this.id ) + "', Login: '" + this.login + "', Nome: '" + this.nome +  
                 "', Data de Nascimento: '" + this.dataNascimento +  "', Endereço: '" + this.endereco +  "', Celular: '" + this.celular + 
                 "', E-mail: '" + this.email +   "', CPF: '" + this.cpf + "', tipo Adm: '" + this.tipoAdm + "'";
     }

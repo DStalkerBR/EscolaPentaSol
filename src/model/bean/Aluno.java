@@ -1,5 +1,7 @@
 package model.bean;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -71,6 +73,15 @@ public class Aluno extends Pessoa {
 
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+    
+    @Override
+    public String toString(){
+        Format formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return "Id: '" + String.valueOf(this.id ) + "', Data Cadastro: '" + formatter.format(this.dataCadastro) + "', Nome: '" + this.nome +  
+                "', Data de Nascimento: '" + this.dataNascimento +  "', Endereço: '" + this.endereco +  "', Celular: '" + this.celular + 
+                "', E-mail: '" + this.email +   "', CPF: '" + this.cpf + "', Possui Instrumento: '" + this.possuiInstrumento 
+                + "', idAulas '" + this.idAula.toString() + "', Matricula: '" + this.matricula + "'";
     }
    
 }

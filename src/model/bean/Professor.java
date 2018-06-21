@@ -44,5 +44,13 @@ public class Professor extends Usuario {
     public void setEspecializacoes(List<Short> especializacoes) {
         this.especializacoes = especializacoes;
     }
+    
+    @Override
+    public String toString(){
+        return "Id: '" + String.valueOf(this.id ) + "', Login: '" + this.login + "', Nome: '" + this.nome +  
+                "', Data de Nascimento: '" + this.dataNascimento +  "', Endereço: '" + this.endereco +  "', Celular: '" + this.celular + 
+                "', E-mail: '" + this.email +   "', CPF: '" + this.cpf + "', Aulas : '" + idAula.toString() + 
+                "', Especializações : '" + especializacoes.toString() + "'";
+    }
 
 }

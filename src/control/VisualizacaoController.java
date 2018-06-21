@@ -1,5 +1,6 @@
 package control;
 
+import java.util.ArrayList;
 import model.entidade.VisualizacaoInstrumentos;
 import model.entidade.VisualizacaoAdministradores;
 import model.entidade.VisualizacaoProfessores;
@@ -40,18 +41,23 @@ public class VisualizacaoController {
     
     public List<Aula> visualizarAulas(short idProf) {
         return VisualizacaoAulas.listar(idProf);
-    }
-    
-    
-    
+    } 
+
     
     
     //Teste
-    /*public static void main(String argv[]){
+    public static void main(String argv[]){
+        /*VisualizacaoController visualiza = new VisualizacaoController();
+        List<Aula> lista = new ArrayList<>(visualiza.visualizarAulas((short) 2));
+        lista.forEach((aula) -> {
+               System.out.println("ID" + aula.getId() + "NOME" + aula.getTipoAula() + "DESC" + aula.getDiaSemana()+ " QNT "+aula.getInstrumentoNecessario());
+         });    */ 
+        
         VisualizacaoController visualiza = new VisualizacaoController();
-        List<Instrumento> lista = new ArrayList<>(visualiza.visualizarInstrumento());
-        lista.forEach((instrumento) -> {
-               System.out.println("ID" + instrumento.getId() + "NOME" + instrumento.getNome() + "DESC" + instrumento.getDescricao() + " QNT "+instrumento.getQtdInstrumentos());
-         });         
-    } */
+        List<Professor> lista = new ArrayList<>(visualiza.visualizarProfessor());
+        lista.forEach((professor) -> {
+               System.out.println(professor.toString());
+         });
+        
+    } 
 }

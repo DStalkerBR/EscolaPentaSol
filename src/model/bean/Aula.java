@@ -1,5 +1,7 @@
 package model.bean;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Aula{
@@ -116,7 +118,15 @@ public class Aula{
         this.dataFim = dataFim;
     }
     
-    
-    
+    @Override
+    public String toString(){
+        Format formatter = new SimpleDateFormat("HH:mm:ss");
+        Format formatterDate = new SimpleDateFormat("dd-MM-yyyy");
+        return "Id: '" + String.valueOf(this.id ) + "', Tipo Aula: '" + this.tipoAula + "', Dia da Semana: '" + this.diaSemana +  
+                "', Hora de Inicio: '" + formatter.format(this.horaInicio) +  "', Hora Fim: '" + formatter.format(this.horaFim) + 
+                "', Data Inicio: '" + formatterDate.format(this.dataInicio) +  "', Data Fim: '" + formatterDate.format(this.dataFim) +  
+                "', Instrumento Necessário: '" + this.instrumentoNecessario + "', id Professor: '" + String.valueOf(this.idProfessor) 
+                + "', Quantidade de Aulas: '" + String.valueOf(this.qtdAula) + "'";
+    }   
     
 }

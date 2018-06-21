@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.bean.Aluno;
 import model.bean.Aula;
 
 /**
@@ -140,8 +141,11 @@ public class AulaDAO {
         List<Aula> aulas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aula WHERE idprofessor = ?");
+            stmt = con.prepareStatement("SELECT * FROM aula WHERE idprofessor = ? AND dataInicio <= ? AND dataFim >= ?");
             stmt.setShort(1, idProf);
+            Date dataAtual = new Date(new java.util.Date().getTime());
+            stmt.setDate(2, dataAtual);
+            stmt.setDate(3, dataAtual);
             rs = stmt.executeQuery();
             
             while (rs.next()) {                
@@ -159,10 +163,48 @@ public class AulaDAO {
         
     }
     
+    public List<Aula> listar(List<Aluno> alunos) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Aula> aulas = new ArrayList<>();
+        
+        try {
+            if (alunos.size() > 0) {
+                StringBuilder inStatement = new StringBuilder("?");
+                for (int i = 1; i < alunos.size(); i++) {
+                    inStatement.append(", ?");
+                }
+                stmt = con.prepareStatement("SELECT * FROM aula WHERE IN (" + inStatement.toString() + ")");
+                int k = 1;                
+                for (Aluno aluno: alunos){       
+                    stmt.setShort(k++, aluno.getIdAula().get(0));
+                }
+                
+            }
+            rs = stmt.executeQuery();            
+            while (rs.next()) {                
+                Aula aula = map(rs);
+                aulas.add(aula);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return aulas;        
+    }
+    
     private Aula map(ResultSet rs) throws SQLException {
         Aula aula = new Aula();
         aula.setId(rs.getShort("id"));
         aula.setTipoAula(rs.getString("tipo"));
+        aula.setDiaSemana(rs.getString("dia"));
         aula.setHoraInicio(rs.getTime("horainicio"));
         aula.setHoraFim(rs.getTime("horafim"));
         aula.setDataInicio(rs.getTime("dataInicio"));
