@@ -131,6 +131,12 @@ public class CadastroController {
       CadastroController cadControl = new CadastroController();
       cadControl.cadastrarInstrumento("Piano", "Steinway Model Z ", 1); 
       
-         */
+         
+        
+        CadastroController cadControl = new CadastroController();
+        cadControl.editarAula((short)1, "Violeta", "Sabado", new Date(),  new Date(),  new Date(),  new Date(), "Violeta", (short)1, (short)30);
+*/
+        CadastroController cadControl = new CadastroController();
+        cadControl.deletarAula((short) 13);
     }
 }

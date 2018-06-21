@@ -30,10 +30,10 @@ public class AulaDAO {
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        String insert_sql = "INSERT INTO aula (tipo, dia, horainicio, horafim, dataInicio, dataFim, instrumento, idprofessor, qtdaula) VALUES(?,?,?,?,?,?,?)";
+        String insert_sql = "INSERT INTO aula (tipo, dia, horainicio, horafim, dataInicio, dataFim, instrumento, idprofessor, qtdaula) VALUES(?,?,?,?,?,?,?,?,?)";
         String update_sql = "UPDATE aula SET tipo = ?, dia = ?, horainicio = ?, horafim = ?, dataInicio = ?, dataFim = ?, instrumento = ?, idprofessor = ?, qtdaula = ? WHERE id = ?";
         try {
-            if (aula.getId() == 0)
+            if (aula.getId() == (short) 0)
                 stmt = con.prepareStatement(insert_sql);
             else {
                 stmt = con.prepareStatement(update_sql);
