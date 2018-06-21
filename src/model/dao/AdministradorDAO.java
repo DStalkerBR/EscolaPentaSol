@@ -125,7 +125,7 @@ public class AdministradorDAO {
     
     private Administrador map(ResultSet rs) throws SQLException {
         Administrador admin = new Administrador();
-        admin.setIdAdm(rs.getShort("id"));
+        admin.setId(rs.getShort("id"));
         admin.setLogin(rs.getString("login"));
         admin.setCpf(rs.getString("cpf"));
         admin.setNome(rs.getString("nome"));

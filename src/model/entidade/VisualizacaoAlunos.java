@@ -20,4 +20,9 @@ public class VisualizacaoAlunos {
         return alunoDao.listar();
     }
     
+    public static List<Aluno> listar(short idAula) {
+        AlunoDAO alunoDao = new AlunoDAO();
+        return alunoDao.listar(idAula);
+    }
+    
 }

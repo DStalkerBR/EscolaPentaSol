@@ -17,7 +17,6 @@ public class Aluno extends Pessoa {
     private short id;
     private Date dataCadastro;
     private List<Short> idAula;
-    private List<Integer> listasPresenca;
     private String matricula;
     private boolean possuiInstrumento;
 
@@ -73,14 +72,5 @@ public class Aluno extends Pessoa {
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
-
-    public List<Integer> getListasPresenca() {
-        return listasPresenca;
-    }
-
-    public void setListasPresenca(List<Integer> listasPresenca) {
-        this.listasPresenca = listasPresenca;
-    }
-    
-    
+   
 }

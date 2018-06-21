@@ -1,8 +1,6 @@
 package model.entidade;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 import model.bean.Aluno;
 import model.dao.AlunoDAO;
 
@@ -12,8 +10,18 @@ import model.dao.AlunoDAO;
  */
 public class CadastroAluno {
     public void inserir(Aluno aluno){
-        aluno.setListasPresenca(new ArrayList<>(Stream.of(0, 0, 0).collect(Collectors.toList())));
+        AlunoDAO alunoDao = new AlunoDAO();
+        aluno.setId( (short) 0);
+        alunoDao.inserir(aluno);
+    }
+    
+    public void editar(Aluno aluno){
         AlunoDAO alunoDao = new AlunoDAO();
         alunoDao.inserir(aluno);
+    }
+    
+    public void deletar (short idAluno){
+        AlunoDAO alunoDao = new AlunoDAO();
+        alunoDao.delete(idAluno);
     }
 }

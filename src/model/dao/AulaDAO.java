@@ -130,6 +130,35 @@ public class AulaDAO {
         
     }
     
+    public List<Aula> listar(short idProf) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Aula> aulas = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM aula WHERE idprofessor = ?");
+            stmt.setShort(1, idProf);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {                
+                Aula aula = map(rs);
+                aulas.add(aula);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AulaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return aulas;
+        
+    }
+    
     private Aula map(ResultSet rs) throws SQLException {
         Aula aula = new Aula();
         aula.setId(rs.getShort("id"));

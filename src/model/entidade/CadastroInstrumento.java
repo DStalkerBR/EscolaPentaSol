@@ -15,6 +15,17 @@ import model.dao.InstrumentoDAO;
 public class CadastroInstrumento {
    public void inserir(Instrumento instrumento){
         InstrumentoDAO instDao = new InstrumentoDAO();
+        instrumento.setId( (short) 0);
         instDao.inserir(instrumento);
+    }
+   
+   public void editar(Instrumento instrumento){
+        InstrumentoDAO instDao = new InstrumentoDAO();
+        instDao.inserir(instrumento);
+    }
+    
+    public void deletar (short idInstrumento){
+        InstrumentoDAO instDao = new InstrumentoDAO();
+        instDao.delete(idInstrumento);
     }
 }

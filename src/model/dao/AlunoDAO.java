@@ -25,15 +25,15 @@ public class AlunoDAO {
         Connection con = ConnectionFactory.getConnection();
 
         PreparedStatement stmt = null;
-        String insert_sql = "INSERT INTO aluno (cpf, nome, email, endereco, celular, nascimento, instrumento, aulas, presencas, datacad) VALUES(?,?,?,?,?,?,?,?,?,?)";
-        String update_sql = "UPDATE aluno SET cpf = ?, nome = ?, email = ?, endereco = ?, celular = ?, nascimento = ?, instrumento = ?, aulas = ?, presencas = ?, datacad = ? WHERE id = ?";
+        String insert_sql = "INSERT INTO aluno (cpf, nome, email, endereco, celular, nascimento, instrumento, aulas, presencas, datacad) VALUES(?,?,?,?,?,?,?,?,?)";
+        String update_sql = "UPDATE aluno SET cpf = ?, nome = ?, email = ?, endereco = ?, celular = ?, nascimento = ?, instrumento = ?, aulas = ?,  datacad = ? WHERE id = ?";
         try {
 
             if (aluno.getId() == 0) {
                 stmt = con.prepareStatement(insert_sql);
             } else {
                 stmt = con.prepareStatement(update_sql);
-                stmt.setShort(11, aluno.getId());
+                stmt.setShort(10, aluno.getId());
             }
             stmt.setString(1, aluno.getCpf());
             stmt.setString(2, aluno.getNome());
@@ -53,15 +53,8 @@ public class AlunoDAO {
 
             stmt.setString(8, listaAulas.toString());
 
-            StringJoiner stringPresencas = new StringJoiner(",");
-            List<Integer> listaPresencas = new ArrayList<>(aluno.getListasPresenca());
-            listaPresencas.forEach((listaPresenca) -> {
-                listaAulas.add(listaPresenca.toString());
-            });
-
-            stmt.setString(9, stringPresencas.toString());
             Timestamp dataCadastroStamp = new Timestamp(aluno.getDataCadastro().getTime());
-            stmt.setTimestamp(10, dataCadastroStamp);
+            stmt.setTimestamp(9, dataCadastroStamp);
 
             stmt.executeUpdate();
 
@@ -118,6 +111,37 @@ public class AlunoDAO {
         return alunos;
 
     }
+    
+    public List<Aluno> listar(short idAula) {
+        Connection con = ConnectionFactory.getConnection();
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Aluno> alunos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM aluno");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {   
+                String aulas = rs.getString("aulas");
+                Aluno aluno;
+                if (aulas.indexOf(idAula) >= 0) {                     
+                    aluno = map(rs);
+                    alunos.add(aluno);
+                } 
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return alunos;
+
+    }
 
     public Aluno find(short idAluno) {
 
@@ -157,8 +181,6 @@ public class AlunoDAO {
         aluno.setPossuiInstrumento(rs.getBoolean("instrumento"));
         List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));
         aluno.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
-        List<String> listaPresencas = Arrays.asList(rs.getString("presencas").split(","));
-        aluno.setListasPresenca(listaPresencas.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
         Date dataCadastro = new Date(rs.getTimestamp("datacad").getTime());
         aluno.setDataCadastro(dataCadastro);
         return aluno;

@@ -122,6 +122,7 @@ public class ListaPresencaDAO {
         
         try {
             stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? ");
+            stmt.setShort(1, idAluno);
             rs = stmt.executeQuery();
             
             while (rs.next()) {                

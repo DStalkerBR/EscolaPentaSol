@@ -15,6 +15,17 @@ import model.dao.ProfessorDAO;
 public class CadastroProfessor {
     public void inserir(Professor prof){
         ProfessorDAO profDao = new ProfessorDAO();
+        prof.setId( (short) 0);
         profDao.inserir(prof);
+    }
+    
+    public void editar(Professor prof){
+        ProfessorDAO profDao = new ProfessorDAO();        
+        profDao.inserir(prof);
+    }
+    
+    public void deletar (short idProf){
+        ProfessorDAO profDao = new ProfessorDAO();
+        profDao.delete(idProf);
     }
 }

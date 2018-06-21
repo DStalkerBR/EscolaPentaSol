@@ -1,6 +1,8 @@
 package model.bean;
 
 import java.util.Date;
+import java.util.List;
+import model.dao.ListaPresencaDAO;
 
 public class ListaPresenca {
     private short id;
@@ -49,5 +51,9 @@ public class ListaPresenca {
         this.data = data;
     }
     
+    public void inserir (List<ListaPresenca> presencas){
+        ListaPresencaDAO presencaDao = new ListaPresencaDAO();
+        presencaDao.inserir(presencas);
+    }    
     
 }

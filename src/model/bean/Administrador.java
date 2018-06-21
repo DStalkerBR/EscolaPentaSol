@@ -17,7 +17,7 @@ public class Administrador extends Usuario {
         return this.id;
     }
 
-    public void setIdAdm(short id) {
+    public void setId(short id) {
         this.id = id;
     }
 
