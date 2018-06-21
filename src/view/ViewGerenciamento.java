@@ -27,118 +27,101 @@ public class ViewGerenciamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonCertificado = new javax.swing.JButton();
         jButtonListas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        jLabel3.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Logo - PentaSol");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Backgroud.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setMaximumSize(new java.awt.Dimension(1024, 768));
+        jLabel5.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel5.setPreferredSize(new java.awt.Dimension(1024, 768));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento - Escola PentaSol");
         setMaximumSize(new java.awt.Dimension(32767, 32767));
-        setPreferredSize(new java.awt.Dimension(517, 394));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
 
-        jLabel1.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Logo - PentaSol");
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-        jLabel2.setText("Gerenciamento");
-
-        jButtonCadastrar.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
+        jButtonCadastrar.setBackground(new java.awt.Color(225, 174, 161));
+        jButtonCadastrar.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 24)); // NOI18N
+        jButtonCadastrar.setForeground(new java.awt.Color(10, 33, 36));
         jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonCadastrar.setBorderPainted(false);
+        jButtonCadastrar.setOpaque(false);
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCadastrarActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonCadastrar);
+        jButtonCadastrar.setBounds(40, 660, 150, 50);
+        jButtonCadastrar.getAccessibleContext().setAccessibleName("");
 
-        jButtonCertificado.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
+        jButtonCertificado.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 24)); // NOI18N
         jButtonCertificado.setText("Certificado");
         jButtonCertificado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCertificadoActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonCertificado);
+        jButtonCertificado.setBounds(480, 660, 140, 50);
 
-        jButtonListas.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
+        jButtonListas.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 24)); // NOI18N
         jButtonListas.setText("Listas");
         jButtonListas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListasActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonListas);
+        jButtonListas.setBounds(285, 660, 110, 50);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonListas, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonListas, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Background02.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1024, 768));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1024, 768));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1024, 768));
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1024, 768);
+        jLabel1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        new ViewCadastrar().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    private void jButtonListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonListasActionPerformed
 
     private void jButtonCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCertificadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCertificadoActionPerformed
 
-    private void jButtonListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListasActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        new ViewCadastrar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,8 +163,7 @@ public class ViewGerenciamento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCertificado;
     private javax.swing.JButton jButtonListas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

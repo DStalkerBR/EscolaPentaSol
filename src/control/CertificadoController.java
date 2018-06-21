@@ -9,8 +9,8 @@ import model.entidade.VisualizacaoAlunos;
 import model.entidade.VisualizacaoAulas;
 
 public class CertificadoController {
-    List<Aluno> alunosValidos;
-    List<Aula> aulas;    
+    private List<Aluno> alunosValidos;
+    private List<Aula> aulas;    
     
     public CertificadoController(){
          alunosValidos = null;
@@ -24,6 +24,8 @@ public class CertificadoController {
         PresencaController QuantPresenca = new PresencaController();
         for (Aluno aluno: alunos){ 
             for(Short idAula: aluno.getIdAula()){
+                System.out.println((float) QuantPresenca.checarPresenca(aluno.getId(), idAula));
+                System.out.println((float)VisualizacaoAulas.find(idAula).getQtdAula());
                 if ((float) QuantPresenca.checarPresenca(aluno.getId(), idAula) / (float)VisualizacaoAulas.find(idAula).getQtdAula() >= 0.75 ){
                     aluno.setIdAula(new ArrayList<>(Collections.singletonList(idAula)));
                     this.alunosValidos.add(aluno);
@@ -31,7 +33,8 @@ public class CertificadoController {
                     
             }                
         }
-        this.aulas = new ArrayList <>(VisualizacaoAulas.getTipos(alunos));
+        if (this.alunosValidos.size() > 0)
+            this.aulas = new ArrayList <>(VisualizacaoAulas.getTipos(alunos));
     }
 
     public List<Aluno> getAlunosValidos() {
@@ -41,5 +44,14 @@ public class CertificadoController {
     public List<Aula> getTipoAulas() {
         return this.aulas;
     }   
+    
+    public static void main (String argv[]){
+        CertificadoController cert = new CertificadoController();
+        cert.listar();
+        for (int i = 0; i < cert.getAlunosValidos().size(); i++)
+            System.out.println(cert.getAlunosValidos().get(i).toString());
+        for (int i = 0; i < cert.getTipoAulas().size(); i++)
+            System.out.println(cert.getTipoAulas().get(i).toString());
+    }
     
 }

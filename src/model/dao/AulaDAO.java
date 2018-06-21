@@ -178,9 +178,11 @@ public class AulaDAO {
                 for (int i = 1; i < alunos.size(); i++) {
                     inStatement.append(", ?");
                 }
-                stmt = con.prepareStatement("SELECT * FROM aula WHERE IN (" + inStatement.toString() + ")");
+                System.out.println(inStatement.toString());
+                stmt = con.prepareStatement("SELECT * FROM aula WHERE id IN (" + inStatement.toString() + ")");
                 int k = 1;                
-                for (Aluno aluno: alunos){       
+                for (Aluno aluno: alunos){  
+                    System.out.println(aluno.getIdAula().get(0));
                     stmt.setShort(k++, aluno.getIdAula().get(0));
                 }
                 

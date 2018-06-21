@@ -24,7 +24,7 @@ public class ListaPresencaDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         String insert_sql = "INSERT INTO presenca (idAluno, idAula, presente, data) VALUES(?,?,?,?)";
-        String update_sql = "UPDATE aula SET idAluno = ?, idAula = ?, presente = ?, data = ? WHERE id = ?";
+        String update_sql = "UPDATE presenca SET idAluno = ?, idAula = ?, presente = ?, data = ? WHERE id = ?";
         try { 
             if (presenca.getId() == 0)
                 stmt = con.prepareStatement(insert_sql);
@@ -94,7 +94,7 @@ public class ListaPresencaDAO {
         List<ListaPresenca> presencas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aula");
+            stmt = con.prepareStatement("SELECT * FROM presenca");
             rs = stmt.executeQuery();
             
             while (rs.next()) {                
@@ -119,9 +119,10 @@ public class ListaPresencaDAO {
         ResultSet rs = null;
         int count = 0;
         try {
-            stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? AND idAula = ?");
+            stmt = con.prepareStatement("SELECT * FROM presenca WHERE idAluno = ? AND idAula = ? AND presente = ?");
             stmt.setShort(1, idAluno);
             stmt.setShort(2, idAula);
+            stmt.setBoolean(3, true);
             rs = stmt.executeQuery();
             
             while (rs.next()) {                
@@ -147,7 +148,7 @@ public class ListaPresencaDAO {
         List<ListaPresenca> presencas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM aula WHERE idAluno = ? AND idAula = ?");
+            stmt = con.prepareStatement("SELECT * FROM presenca WHERE idAluno = ? AND idAula = ?");
             stmt.setShort(1, idAluno);
             stmt.setShort(2, idAula);
             rs = stmt.executeQuery();
@@ -172,6 +173,7 @@ public class ListaPresencaDAO {
         presenca.setIdAluno(rs.getShort("idAluno"));
         presenca.setIdAula(rs.getShort("idAula"));
         presenca.setPresente(rs.getBoolean("idAula"));
+        presenca.setData(rs.getDate("idAula"));
         return presenca;
     }
 }

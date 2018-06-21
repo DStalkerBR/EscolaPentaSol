@@ -11,104 +11,82 @@ public class ViewCadastrar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButtonCadAluno = new javax.swing.JButton();
-        jButtonCadProfessor = new javax.swing.JButton();
-        jButtonCadAula = new javax.swing.JButton();
         jButtonCadMaterial = new javax.swing.JButton();
+        jButtonCadAula = new javax.swing.JButton();
+        jButtonCadProfessor = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar - Escola PentaSol");
+        setMaximumSize(new java.awt.Dimension(1200, 768));
+        setSize(new java.awt.Dimension(1200, 768));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1200, 768));
+        jPanel2.setLayout(null);
 
-        jLabel1.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Logo - PentaSol");
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-        jLabel2.setText("Cadastrar");
-
-        jButtonCadAluno.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
-        jButtonCadAluno.setText("Aluno");
+        jButtonCadAluno.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 18)); // NOI18N
+        jButtonCadAluno.setText("Clique");
+        jButtonCadAluno.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButtonCadAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCadAlunoActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonCadAluno);
+        jButtonCadAluno.setBounds(130, 670, 140, 20);
 
-        jButtonCadProfessor.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
-        jButtonCadProfessor.setText("Professor");
-        jButtonCadProfessor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadProfessorActionPerformed(evt);
-            }
-        });
-
-        jButtonCadAula.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
-        jButtonCadAula.setText("Aula");
-        jButtonCadAula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadAulaActionPerformed(evt);
-            }
-        });
-
-        jButtonCadMaterial.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 18)); // NOI18N
-        jButtonCadMaterial.setText("Material");
+        jButtonCadMaterial.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 18)); // NOI18N
+        jButtonCadMaterial.setText("Clique");
         jButtonCadMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCadMaterialActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonCadMaterial);
+        jButtonCadMaterial.setBounds(970, 670, 140, 20);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jButtonCadAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCadProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCadAula, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCadMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCadProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCadAula, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCadMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
+        jButtonCadAula.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 18)); // NOI18N
+        jButtonCadAula.setText("Clique");
+        jButtonCadAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadAulaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonCadAula);
+        jButtonCadAula.setBounds(690, 670, 140, 20);
+
+        jButtonCadProfessor.setFont(new java.awt.Font("Humanst521 Lt BT", 0, 18)); // NOI18N
+        jButtonCadProfessor.setText("Clique");
+        jButtonCadProfessor.setMaximumSize(new java.awt.Dimension(47, 25));
+        jButtonCadProfessor.setMinimumSize(new java.awt.Dimension(47, 25));
+        jButtonCadProfessor.setPreferredSize(new java.awt.Dimension(47, 25));
+        jButtonCadProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadProfessorActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonCadProfessor);
+        jButtonCadProfessor.setBounds(410, 670, 140, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CadastrarRes2.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1200, 768);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,7 +151,6 @@ public class ViewCadastrar extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadMaterial;
     private javax.swing.JButton jButtonCadProfessor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,11 +1,9 @@
 package view;
 
-import services.ValidarCPF;
-import services.ValidarEmail;
-import services.AutenticacaoData;
 import model.bean.Usuario;
 import javax.swing.JOptionPane;
 import model.dao.UsuarioDAO;
+import validacoes.*;
 
 public class ViewCadAluno extends javax.swing.JFrame {
 
@@ -253,11 +251,11 @@ public class ViewCadAluno extends javax.swing.JFrame {
             System.out.println("ERRO");
         } else {
             System.out.println("CERTO");
-           /* Usuario novoUsuario = new Usuario(txtNomeCompleto.getText(),
+            Usuario novoUsuario = new Usuario(txtNomeCompleto.getText(),
                     varDataNasc, varEndereco, varEmail,
                     varCpf, possuiInstrumento.isSelected());
             UsuarioDAO daoUsuario = new UsuarioDAO();
-            daoUsuario.create(novoUsuario);*/
+            daoUsuario.create(novoUsuario);
 
             JOptionPane.showMessageDialog(null,
                     "Aluno Cadastrado!",

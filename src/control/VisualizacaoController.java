@@ -51,13 +51,14 @@ public class VisualizacaoController {
         List<Aula> lista = new ArrayList<>(visualiza.visualizarAulas((short) 2));
         lista.forEach((aula) -> {
                System.out.println("ID" + aula.getId() + "NOME" + aula.getTipoAula() + "DESC" + aula.getDiaSemana()+ " QNT "+aula.getInstrumentoNecessario());
-         });    */ 
+         });   
         
         VisualizacaoController visualiza = new VisualizacaoController();
         List<Professor> lista = new ArrayList<>(visualiza.visualizarProfessor());
         lista.forEach((professor) -> {
                System.out.println(professor.toString());
          });
+        */ 
         
     } 
 }

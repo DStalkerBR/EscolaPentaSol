@@ -89,7 +89,7 @@ public class UsuarioDAO {
                 prof.setDataNascimento(rs.getString("nascimento"));
                 List<String> idAulas = Arrays.asList(rs.getString("aulas").split(","));                
                 prof.setIdAula(idAulas.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
-                List<String> especializacoes = Arrays.asList(rs.getString("presencas").split(","));                
+                List<String> especializacoes = Arrays.asList(rs.getString("especializacao").split(","));                
                 prof.setEspecializacoes(especializacoes.stream().map(s -> Short.parseShort(s)).collect(Collectors.toList()));
                 return prof;
             }
