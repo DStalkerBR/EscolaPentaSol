@@ -8,6 +8,8 @@ public class Aula{
     private String diaSemana; //Exemplo: Segunda-feira, etc.
     private Date horaInicio;
     private Date horaFim;    
+    private Date dataInicio;
+    private Date dataFim;   
     private String instrumentoNecessario;
     private short idProfessor; //Identificador do Professor da aula
     private short qtdAula; //Quantidade de Aulas
@@ -15,7 +17,7 @@ public class Aula{
     public Aula() {
     }
     
-    public Aula(String tipoAula, String diaSemana, Date horaInicio, Date horaFim, String instrumentoNecessario, short idProfessor, short qtdAula) {
+    public Aula(String tipoAula, String diaSemana, Date horaInicio, Date horaFim, Date dataInicio, Date dataFim, String instrumentoNecessario, short idProfessor, short qtdAula) {
         this.tipoAula = tipoAula;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
@@ -23,6 +25,8 @@ public class Aula{
         this.instrumentoNecessario = instrumentoNecessario;
         this.idProfessor = idProfessor;
         this.qtdAula = qtdAula;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
     } 
       
     //Identificador da Aula
@@ -95,6 +99,24 @@ public class Aula{
     public void setInstrumentoNecessario(String instrumentoNecessario){
         this.instrumentoNecessario = instrumentoNecessario;
     }
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+    
+    
     
     
 }

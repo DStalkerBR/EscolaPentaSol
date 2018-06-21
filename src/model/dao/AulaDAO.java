@@ -7,6 +7,7 @@ package model.dao;
 
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,23 +29,25 @@ public class AulaDAO {
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        String insert_sql = "INSERT INTO aula (tipo, dia, horainicio, horafim, instrumento, idprofessor, qtdaula) VALUES(?,?,?,?,?,?,?)";
-        String update_sql = "UPDATE aula SET tipo = ?, dia = ?, horainicio = ?, horafim = ?, instrumento = ?, idprofessor = ?, qtdaula = ?) WHERE id = ?";
+        String insert_sql = "INSERT INTO aula (tipo, dia, horainicio, horafim, dataInicio, dataFim, instrumento, idprofessor, qtdaula) VALUES(?,?,?,?,?,?,?)";
+        String update_sql = "UPDATE aula SET tipo = ?, dia = ?, horainicio = ?, horafim = ?, dataInicio = ?, dataFim = ?, instrumento = ?, idprofessor = ?, qtdaula = ? WHERE id = ?";
         try {
             if (aula.getId() == 0)
                 stmt = con.prepareStatement(insert_sql);
             else {
                 stmt = con.prepareStatement(update_sql);
-                stmt.setShort(8, aula.getId());
+                stmt.setShort(10, aula.getId());
             }
                       
             stmt.setString(1, aula.getTipoAula());
             stmt.setString(2, aula.getDiaSemana()); 
             stmt.setTime(3, new Time(aula.getHoraInicio().getTime()));
             stmt.setTime(4, new Time(aula.getHoraFim().getTime()));
-            stmt.setString(5, aula.getInstrumentoNecessario());
-            stmt.setShort(6, (short) aula.getIdProfessor());
-            stmt.setShort(7, (short) aula.getQtdAula());
+            stmt.setDate(5, new Date(aula.getDataInicio().getTime()));
+            stmt.setDate(6, new Date(aula.getDataFim().getTime()));
+            stmt.setString(7, aula.getInstrumentoNecessario());
+            stmt.setShort(8, (short) aula.getIdProfessor());
+            stmt.setShort(9, (short) aula.getQtdAula());
            
             stmt.executeUpdate();
             
@@ -133,6 +136,8 @@ public class AulaDAO {
         aula.setTipoAula(rs.getString("tipo"));
         aula.setHoraInicio(rs.getTime("horainicio"));
         aula.setHoraFim(rs.getTime("horafim"));
+        aula.setDataInicio(rs.getTime("dataInicio"));
+        aula.setDataFim(rs.getTime("dataFim"));
         aula.setInstrumentoNecessario(rs.getString("instrumento"));
         aula.setIdProfessor(rs.getShort("idprofessor"));
         aula.setQtdAula(rs.getShort("qtdaula"));

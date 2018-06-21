@@ -39,9 +39,9 @@ public class CadastroController {
     cadAluno.inserir(aluno);
   }
   
-  public void cadastrarAula(String tipoAula, String diaSemana, Date horaInicio, Date horaFim, 
+  public void cadastrarAula(String tipoAula, String diaSemana, Date horaInicio, Date horaFim,  Date dataInicio, Date dataFim,
           String instrumentoNecessario, short idProfessor, short qtdAula){
-      aula = new Aula(tipoAula, diaSemana, horaInicio, horaFim, instrumentoNecessario, idProfessor, qtdAula);
+      aula = new Aula(tipoAula, diaSemana, horaInicio, horaFim, dataInicio, dataFim, instrumentoNecessario, idProfessor, qtdAula);
       
       CadastroAula cadAula = new CadastroAula();
       cadAula.inserir(aula);
